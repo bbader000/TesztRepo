@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hazi5", "hazi5\hazi5.csproj", "{65E8A347-8B50-450B-9AF5-9B708D0B72CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65E8A347-8B50-450B-9AF5-9B708D0B72CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65E8A347-8B50-450B-9AF5-9B708D0B72CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65E8A347-8B50-450B-9AF5-9B708D0B72CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65E8A347-8B50-450B-9AF5-9B708D0B72CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {548D6F1C-35B2-42D0-99A2-0C7CAF439643}
+	EndGlobalSection
+EndGlobal
