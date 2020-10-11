@@ -13,9 +13,9 @@ namespace hazi5
 {
     public partial class Form1 : Form
     {
-        public PortfolioEntities context = new PortfolioEntities();
-        public List<Tick> Ticks;
-        public List<PortfolioItem> items = new List<PortfolioItem>();
+         PortfolioEntities context = new PortfolioEntities();
+         List<Tick> Ticks;
+         List<PortfolioItem> items = new List<PortfolioItem>();
         
         public Form1()
         {
