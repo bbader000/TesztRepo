@@ -17,16 +17,43 @@ namespace hazi6
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<String> Currencies = new BindingList<string>();
 
         public Form1()
         {
             InitializeComponent();
+            //CurrencyAdd();
+           
+            //comboBox1.DataSource = Currencies;
+            comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
+            dateTimePicker1.ValueChanged += DateTimePicker1_ValueChanged;
+            dateTimePicker2.ValueChanged += DateTimePicker2_ValueChanged;
+            RefreshData();
 
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void DateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            Rates.Clear();
             string result = MainRequest();
             dgv.DataSource = Rates;
             ProcessXML(result);
             ChartCreate();
-
         }
 
         private void ChartCreate()
@@ -64,6 +91,7 @@ namespace hazi6
 
                 var temp = (XmlElement)item.ChildNodes[0];
                 rate.Currency = temp.GetAttribute("curr");
+             
 
                 var unit = decimal.Parse(temp.GetAttribute("unit"));
                 var value = decimal.Parse(temp.InnerText);
@@ -76,20 +104,67 @@ namespace hazi6
 
         }
 
+        //private void CurrencyAdd()
+        //{
+
+        //    string result = CurrReq();
+        //    XmlDocument xml = new XmlDocument();
+        //    xml.LoadXml(result);
+
+        //    foreach (XmlElement item in xml.DocumentElement)
+        //    {
+
+        //        var temp = (XmlElement)item.ChildNodes[0];               
+        //        ChechkCurr(temp.GetAttribute("curr"));
+
+        //    }
+
+           
+        //}
+
+        private void ChechkCurr(string v)
+        {
+            for (int i = 0; i < Currencies.Count; i++)
+            {
+                if (Currencies[i] == v)
+                {
+                    return;
+                }
+            }
+
+            Currencies.Add(v);
+        }
+
         private string MainRequest()
         {
             MNBArfolyamServiceSoapClient mnbService = new MNBArfolyamServiceSoapClient();
 
             var request = new GetExchangeRatesRequestBody()
             {
-                currencyNames = "EUR",
-                startDate = "2020-01-01",
-                endDate = "2020-06-30"
+                currencyNames = comboBox1.Text,
+                startDate = dateTimePicker1.Value.ToString(),
+                endDate = dateTimePicker2.Value.ToString()
             };
 
             GetExchangeRatesResponseBody response = mnbService.GetExchangeRates(request);
 
              string result = response.GetExchangeRatesResult;
+            return result;
+        }
+
+        private string CurrReq()
+        {
+            MNBArfolyamServiceSoapClient mnbService = new MNBArfolyamServiceSoapClient();
+
+            var request = new GetExchangeRatesRequestBody()
+            {
+                startDate = "2020 - 01 - 01",
+                endDate = "2020 - 10 - 01",
+            };
+
+            GetExchangeRatesResponseBody response = mnbService.GetExchangeRates(request);
+
+            string result = response.GetExchangeRatesResult;
             return result;
         }
 

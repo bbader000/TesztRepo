@@ -945,5 +945,10 @@ namespace hazi6.MnbService {
             inValue.GetInfo = GetInfo;
             return ((hazi6.MnbService.MNBArfolyamServiceSoap)(this)).GetInfoAsync(inValue);
         }
+
+        internal object GetCurrencies()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
