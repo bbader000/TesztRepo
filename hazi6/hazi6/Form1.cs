@@ -15,6 +15,19 @@ namespace hazi6
         public Form1()
         {
             InitializeComponent();
+
+
+            GetExchangeRates();
+        }
+
+        private void GetExchangeRates()
+        {
+           
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
