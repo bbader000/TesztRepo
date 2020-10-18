@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 
 namespace hazi6
@@ -23,8 +24,29 @@ namespace hazi6
 
             string result = MainRequest();
             dgv.DataSource = Rates;
-
             ProcessXML(result);
+            ChartCreate();
+
+        }
+
+        private void ChartCreate()
+        {
+
+
+
+            chartRateData.DataSource = Rates;
+
+            var series = chartRateData.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "Date";
+            series.YValueMembers = "Value";
+            series.BorderWidth = 2;
+            chartRateData.Legends[0].Enabled = false;
+            ChartArea area = chartRateData.ChartAreas[0];
+            area.AxisX.MajorGrid.Enabled = false;
+            area.AxisY.MajorGrid.Enabled = false;
+            area.AxisY.IsStartedFromZero = false;
+
         }
 
         private void ProcessXML(string result)
