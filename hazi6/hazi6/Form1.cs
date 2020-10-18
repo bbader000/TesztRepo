@@ -1,4 +1,5 @@
-﻿using hazi6.MnbService;
+﻿using hazi6.Entities;
+using hazi6.MnbService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,24 +9,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace hazi6
 {
     public partial class Form1 : Form
     {
-
+        BindingList<RateData> Rates = new BindingList<RateData>();
 
         public Form1()
         {
             InitializeComponent();
 
-            MainRequest();
-            
+            string result = MainRequest();
+            dgv.DataSource = Rates;
+
+            ProcessXML(result);
         }
 
-        private void MainRequest()
+        private void ProcessXML(string result)
         {
-            var mnbService = new MNBArfolyamServiceSoapClient();
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(result);
+
+            foreach (XmlElement item in xml.DocumentElement)
+            {
+                var rate = new RateData();
+                Rates.Add(rate);
+
+
+                rate.Date = DateTime.Parse(item.GetAttribute("date"));
+
+                var temp = (XmlElement)item.ChildNodes[0];
+                rate.Currency = temp.GetAttribute("curr");
+
+                var unit = decimal.Parse(temp.GetAttribute("unit"));
+                var value = decimal.Parse(temp.InnerText);
+
+                if (unit != 0)
+                {
+                    rate.Value = value / unit;
+                    }
+            }
+
+        }
+
+        private string MainRequest()
+        {
+            MNBArfolyamServiceSoapClient mnbService = new MNBArfolyamServiceSoapClient();
 
             var request = new GetExchangeRatesRequestBody()
             {
@@ -34,7 +65,10 @@ namespace hazi6
                 endDate = "2020-06-30"
             };
 
-            var response = mnbService.GetExchangeRates(request);
+            GetExchangeRatesResponseBody response = mnbService.GetExchangeRates(request);
+
+             string result = response.GetExchangeRatesResult;
+            return result;
         }
 
         private void Form1_Load(object sender, EventArgs e)
