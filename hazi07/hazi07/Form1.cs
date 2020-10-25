@@ -33,7 +33,7 @@ namespace hazi07
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
-
+                    SimStep(year, Population[i]);
                 }
 
                 int NumOfMales = (from x in Population
@@ -49,7 +49,46 @@ namespace hazi07
 
         }
 
-         void readAllcsv()
+        private void SimStep(int year, Person person)
+        {
+            if (person.IsAlive != true)
+            {
+                return;
+            }
+
+            int age = year - person.BirthYear;
+
+            double Pdeath = (from x in DeathProbabilities
+                             where x.Gender == person.Gender && x.Age == age
+                             select x.Pdeath).FirstOrDefault();
+
+            
+            if (Pdeath >= rnd.NextDouble() )
+            {
+                person.IsAlive = false;
+            }
+
+            if (person.Gender == Gender.Female && person.IsAlive)
+            {
+                double Pbirth = (from x in BirthProbabilities
+                                 where x.Age == age
+                                 select x.Pbirth).FirstOrDefault();
+
+                if (Pbirth >= rnd.NextDouble())
+                {
+                    Person newborn = new Person();
+                    newborn.BirthYear = year;
+                    newborn.Gender = (Gender)rnd.Next(1, 3);
+                    newborn.NbrOfChildren = 0;
+                    Population.Add(newborn);
+                }
+
+            }
+
+            
+        }
+
+        void readAllcsv()
         {
             Population = readPerson("C:\\Temp\\nép-teszt.csv");
             BirthProbabilities = readBirth("C:\\Temp\\születés.csv");
