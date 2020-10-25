@@ -49,6 +49,7 @@
     <Compile Include="Entities\Birth-DeathProbability.cs" />
     <Compile Include="Entities\Gender.cs" />
     <Compile Include="Entities\Person.cs" />
+    <Compile Include="Entities\Results.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

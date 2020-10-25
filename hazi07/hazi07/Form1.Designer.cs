@@ -28,67 +28,121 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.btn_browse = new System.Windows.Forms.Button();
+            this.btn_Start = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbl_nepesseg = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numYears = new System.Windows.Forms.NumericUpDown();
+            this.richTextbox = new System.Windows.Forms.RichTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.numYears)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // btn_browse
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 82);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 0;
+            this.btn_browse.Location = new System.Drawing.Point(704, 12);
+            this.btn_browse.Name = "btn_browse";
+            this.btn_browse.Size = new System.Drawing.Size(127, 30);
+            this.btn_browse.TabIndex = 0;
+            this.btn_browse.Text = "Browse";
+            this.btn_browse.UseVisualStyleBackColor = true;
+            this.btn_browse.Click += new System.EventHandler(this.btn_browse_Click);
             // 
-            // dataGridView2
+            // btn_Start
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(285, 82);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView2.TabIndex = 1;
+            this.btn_Start.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btn_Start.Location = new System.Drawing.Point(855, 12);
+            this.btn_Start.Name = "btn_Start";
+            this.btn_Start.Size = new System.Drawing.Size(127, 30);
+            this.btn_Start.TabIndex = 1;
+            this.btn_Start.Text = "Start";
+            this.btn_Start.UseVisualStyleBackColor = true;
+            this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click);
             // 
-            // dataGridView3
+            // textBox1
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(548, 82);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersWidth = 62;
-            this.dataGridView3.RowTemplate.Height = 28;
-            this.dataGridView3.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView3.TabIndex = 2;
+            this.textBox1.Location = new System.Drawing.Point(399, 16);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(274, 26);
+            this.textBox1.TabIndex = 2;
+            // 
+            // lbl_nepesseg
+            // 
+            this.lbl_nepesseg.AutoSize = true;
+            this.lbl_nepesseg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl_nepesseg.Location = new System.Drawing.Point(262, 17);
+            this.lbl_nepesseg.Name = "lbl_nepesseg";
+            this.lbl_nepesseg.Size = new System.Drawing.Size(137, 25);
+            this.lbl_nepesseg.TabIndex = 3;
+            this.lbl_nepesseg.Text = "Néppeség fájl:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(12, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 25);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Záróév:";
+            // 
+            // numYears
+            // 
+            this.numYears.Location = new System.Drawing.Point(95, 17);
+            this.numYears.Maximum = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
+            this.numYears.Name = "numYears";
+            this.numYears.Size = new System.Drawing.Size(120, 26);
+            this.numYears.TabIndex = 5;
+            this.numYears.Value = new decimal(new int[] {
+            2024,
+            0,
+            0,
+            0});
+            // 
+            // richTextbox
+            // 
+            this.richTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextbox.Location = new System.Drawing.Point(17, 63);
+            this.richTextbox.Name = "richTextbox";
+            this.richTextbox.Size = new System.Drawing.Size(965, 438);
+            this.richTextbox.TabIndex = 6;
+            this.richTextbox.Text = "";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView3);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(994, 513);
+            this.Controls.Add(this.richTextbox);
+            this.Controls.Add(this.numYears);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_nepesseg);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btn_Start);
+            this.Controls.Add(this.btn_browse);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numYears)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Button btn_browse;
+        private System.Windows.Forms.Button btn_Start;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lbl_nepesseg;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numYears;
+        private System.Windows.Forms.RichTextBox richTextbox;
     }
 }
 
