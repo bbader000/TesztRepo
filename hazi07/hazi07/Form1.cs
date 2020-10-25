@@ -14,6 +14,7 @@ namespace hazi07
 {
     public partial class Form1 : Form
     {
+        Random rnd = new Random(1234);
         public List<Person> Population = new List<Person>();
         public List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         public List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
@@ -22,6 +23,29 @@ namespace hazi07
             InitializeComponent();
 
             readAllcsv();
+            //dataGridView1.DataSource = Population;
+            //dataGridView2.DataSource = BirthProbabilities;
+            //dataGridView3.DataSource = DeathProbabilities;
+
+
+
+            for (int year = 2005; year < 2024; year++)
+            {
+                for (int i = 0; i < Population.Count; i++)
+                {
+
+                }
+
+                int NumOfMales = (from x in Population
+                                  where x.Gender == Gender.Male && x.IsAlive
+                                  select x).Count();
+                int NumOfFemales = (from x in Population
+                                    where x.Gender == Gender.Female && x.IsAlive
+                                    select x).Count();
+
+                Console.WriteLine(
+        string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, NumOfMales, NumOfFemales));
+            }
 
         }
 
