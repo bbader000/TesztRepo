@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace hazi8.Entities
+namespace hazi8.Abstractions
 {
-   public  class Toy : Label
+    public abstract class Toy : Label
     {
 
         public Toy()
@@ -17,20 +17,18 @@ namespace hazi8.Entities
             Height = 50;
             Width = 50;
 
-            this.Paint += Ball_Paint;
+            this.Paint += Toy_Paint;
         }
 
-        private void Ball_Paint(object sender, PaintEventArgs e)
+        private void Toy_Paint(object sender, PaintEventArgs e)
         {
             DrawImage(e.Graphics);
         }
 
-        protected void DrawImage(Graphics g)
-        {
-            g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
-        }
+        protected abstract void DrawImage(Graphics g);
+       
 
-        public void MoveBall()
+        public virtual void MoveToy()
         {
             Left = Left + 1;
         }
