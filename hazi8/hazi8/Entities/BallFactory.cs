@@ -11,9 +11,9 @@ namespace hazi8.Entities
 
 
 
-        public Toy CreateNew()
+        public Ball CreateNew()
         {
-            return new Toy();
+            return new Ball();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace hazi8
         }
 
         Timer createTimet, conveyorTimer;
-        List<Toy> _balls = new List<Toy>();
+        List<Ball> _balls = new List<Ball>();
 
         public Form1()
         {

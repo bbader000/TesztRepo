@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hazi8.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -8,10 +9,10 @@ using System.Windows.Forms;
 
 namespace hazi8.Entities
 {
-   public  class Toy : Label
+   public  class Ball : Toy
     {
 
-        public Toy()
+        public Ball()
         {
             AutoSize = false;
             Height = 50;
@@ -25,14 +26,16 @@ namespace hazi8.Entities
             DrawImage(e.Graphics);
         }
 
-        protected void DrawImage(Graphics g)
-        {
-            g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
-        }
+       
 
         public void MoveBall()
         {
             Left = Left + 1;
+        }
+
+        protected override void DrawImage(Graphics g)
+        {
+            g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
         }
     }
 }
