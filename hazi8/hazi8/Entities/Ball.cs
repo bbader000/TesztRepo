@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace hazi8.Entities
 {
-   public  class Ball : Toy
+   public  class Ball : Abstractions.Toy
     {
 
         public Ball()
