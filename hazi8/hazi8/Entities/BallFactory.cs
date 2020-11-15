@@ -1,6 +1,7 @@
 ﻿using hazi8.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,17 +10,17 @@ namespace hazi8.Entities
 {
    public  class BallFactory : IToyFactory
     {
+        public Color BallColor { get; set; }
 
 
-
-        public Ball CreateNew()
+        public Toy CreateNew()
         {
-            return new Ball();
+            return new Ball(BallColor);
         }
 
         Abstractions.Toy IToyFactory.CreateNew()
         {
-            return new Ball();
+            return new Ball(BallColor);
         }
     }
 }

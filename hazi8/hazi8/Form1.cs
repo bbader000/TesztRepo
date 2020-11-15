@@ -90,12 +90,25 @@ namespace hazi8
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Factory = new BallFactory();
+            Factory = new BallFactory
+            {
+                BallColor = btn_color.BackColor
+        };
         }
 
         private void btn_car_Click(object sender, EventArgs e)
         {
             Factory = new CarFactory();
+        }
+
+        private void btn_color_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+            colorPicker.Color = button.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+                return;
+            button.BackColor = colorPicker.Color;
         }
 
         private void Form1_Load(object sender, EventArgs e)

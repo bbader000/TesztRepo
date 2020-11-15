@@ -11,9 +11,12 @@ namespace hazi8.Entities
 {
    public  class Ball : Abstractions.Toy
     {
+    
+        public SolidBrush bBallColor { get; private  set; }
 
-        public Ball()
+        public Ball(Color _color)
         {
+            bBallColor = new SolidBrush(_color);
             AutoSize = false;
             Height = 50;
             Width = 50;
@@ -35,7 +38,7 @@ namespace hazi8.Entities
 
         protected override void DrawImage(Graphics g)
         {
-            g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
+            g.FillEllipse(bBallColor, 0, 0, Width, Height);
         }
     }
 }
