@@ -111,6 +111,37 @@ namespace hazi8
             button.BackColor = colorPicker.Color;
         }
 
+        private void color_ribbon_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+            colorPicker.Color = button.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+                return;
+            button.BackColor = colorPicker.Color;
+        }
+
+        private void color_box_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+            colorPicker.Color = button.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+                return;
+            button.BackColor = colorPicker.Color;
+        }
+
+        private void btn_present_Click(object sender, EventArgs e)
+        {
+            Factory = new PresentFactory
+            {
+                ribbon = color_ribbon.BackColor,
+                box = color_box.BackColor
+                
+                
+            };
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
