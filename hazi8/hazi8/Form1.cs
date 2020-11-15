@@ -25,7 +25,8 @@ namespace hazi8
             }
         }
 
-        Timer createTimet, conveyorTimer;
+        
+
         List<Toy> _toys = new List<Toy>();
 
         private void DisplayNext()
@@ -44,7 +45,8 @@ namespace hazi8
 
            
             mainPanel.Width = this.Width;
-
+            Timer createTimet = new Timer();
+            Timer conveyorTimer = new Timer();
             createTimet.Interval = 3000;
             createTimet.Start();
             createTimet.Tick += CreateTimet_Tick;
