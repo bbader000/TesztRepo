@@ -27,5 +27,24 @@ namespace UnitTestExample.Test
             Assert.AreEqual(expectedResult, actualResult);
         }
 
+
+
+
+        [Test,
+        TestCase("abcdABCD", false),
+        TestCase("ABCD1234", false),
+        TestCase("abcd1234", false),
+        TestCase("irf@uni-corvinus.hu", true)]
+        public void TestValidatePass(string pass, bool expectedResult)
+        {
+            var accountController = new AccountController();
+
+            // Act
+            var actualResult = accountController.ValidateEmail(pass);
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
     }
 }
