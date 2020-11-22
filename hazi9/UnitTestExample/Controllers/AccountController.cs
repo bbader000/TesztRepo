@@ -53,7 +53,7 @@ namespace UnitTestExample.Controllers
         {
             return Regex.IsMatch(
                    password,
-                   @"^(?=.[a-z])(?=.[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
+                   @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$");
         }
     }
 }
